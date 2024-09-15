@@ -35,7 +35,24 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/ebv-e2e/**/*"]
+      "exclude": ["apps/ebv-e2e/**/*", "apps/patient-service-e2e/**/*"]
     }
-  ]
+  ],
+  "generators": {
+    "@nx/react": {
+      "application": {
+        "babel": true,
+        "style": "tailwind",
+        "linter": "eslint",
+        "bundler": "rspack"
+      },
+      "component": {
+        "style": "tailwind"
+      },
+      "library": {
+        "style": "tailwind",
+        "linter": "eslint"
+      }
+    }
+  }
 }

@@ -1,0 +1,52 @@
+{
+  "name": "admin-ui",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "admin-ui/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rspack:rspack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "web",
+        "outputPath": "dist/admin-ui",
+        "main": "admin-ui/src/main.tsx",
+        "tsConfig": "admin-ui/tsconfig.app.json",
+        "rspackConfig": "admin-ui/rspack.config.js",
+        "assets": ["admin-ui/src/favicon.ico", "admin-ui/src/assets"]
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/rspack:dev-server",
+      "options": {
+        "buildTarget": "admin-ui:build:development"
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "buildTarget": "admin-ui:build:production"
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "admin-ui:build",
+        "spa": true
+      }
+    }
+  }
+}

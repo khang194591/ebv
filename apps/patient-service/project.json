@@ -1,0 +1,26 @@
+{
+  "name": "patient-service",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/patient-service/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "patient-service:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "patient-service:build:development"
+        },
+        "production": {
+          "buildTarget": "patient-service:build:production"
+        }
+      }
+    }
+  }
+}
