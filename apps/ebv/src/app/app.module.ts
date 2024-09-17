@@ -1,13 +1,21 @@
 import { Module } from '@nestjs/common';
-
+import { ConfigModule } from '@nestjs/config';
+import envConfig from '../config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PATIENT_PATTERN } from '@ebv/libs';
-
-console.log(PATIENT_PATTERN);
 
 @Module({
-  imports: [],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      expandVariables: true,
+      envFilePath:
+        process.env.NODE_ENV === 'production'
+          ? '.env'
+          : `.env.${process.env.NODE_ENV}`,
+      load: envConfig,
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

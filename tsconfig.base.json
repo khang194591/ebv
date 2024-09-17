@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ebv/libs": ["libs/src/index.ts"]
+      "@ebv/libs": ["libs/src/index.ts"],
+      "@ebv/patient-db": ["libs/patient-db/src/index.ts"],
+      "@ebv/patient-schema": ["libs/patient-schema/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

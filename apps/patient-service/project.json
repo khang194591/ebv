@@ -21,6 +21,11 @@
           "buildTarget": "patient-service:build:production"
         }
       }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/patient-service/Dockerfile . -t patient-service"
     }
-  }
+  },
+  "implicitDependencies": ["patient-service"]
 }

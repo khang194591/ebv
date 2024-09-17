@@ -1,2 +1,2 @@
-export * from './lib/libs.module';
+export * from './lib';
 export * from './contracts';
